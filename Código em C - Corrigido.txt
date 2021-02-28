@@ -1,0 +1,236 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <time.h>
+#include <string.h>
+
+void main() {
+
+	int fileira, coluna, PCD, opcao, opt_nome_social, r;
+	int lugares[10][10];
+	char nome[50], cpf[11], email[100], end[200], nome_social[100];
+
+	//Loop for para gerar a matriz com 0's em cada lugar dela
+	for (fileira = 0; fileira < 10; fileira++)
+		for (coluna = 0; coluna < 10; coluna++)
+			lugares[fileira][coluna] = 0;
+
+	//Loop while para rodar o programa repetidas vezes e cadastrar o número necessários de pessoas
+	while (1) {
+		time_t tempo;
+		char* data_hora;
+		tempo = time(NULL);
+		data_hora = ctime(&tempo);
+		fflush(stdin); //Limpa o input padrão para evitar erros
+		printf("(1) Cadastro\n(2) Convidado\n(3) Lugares\n(4) Sorteio\n");
+		printf("Escolha uma das opcoes\n");
+		scanf("%d", &opcao);
+
+		//switch para escolher a opção do usuário
+		switch (opcao) {
+		case 1:
+			fflush(stdin);
+			printf("PCD? 1- Sim 2- Nao");
+			scanf("%d", &PCD);
+
+			//switch para escolher se usuário é PCD ou não
+			switch (PCD) {
+			case 1:
+				fflush(stdin);
+				printf("Fileira: ");
+				scanf("%d", &fileira);
+				fflush(stdin);
+				printf("Coluna: ");
+				scanf("%d", &coluna);
+
+				//Se o lugar estiver disponivel continua
+				if (lugares[fileira][coluna] == 0 && fileira == 7 && coluna >= 0 && coluna < 10) {
+					printf("\nLugar Disponivel\n");
+				}
+				//Senão
+				else {
+					printf("\nLugar Indisponivel\n\n");
+					break; //Quebra o Se e o Caso 1(PCD)
+				}
+				lugares[fileira][coluna] = 1; //Muda o lugar selecionado de 0 para 1
+
+				printf("\nPossui nome social?\n(1) Sim\n(2) Nao\n");
+				scanf("%d", &opt_nome_social);
+				switch (opt_nome_social) {
+				case 1:
+					fflush(stdin);
+					printf("\nNome Social: ");
+					scanf("%s", &nome_social);
+					fflush(stdin);
+					printf("\nCPF: ");
+					scanf("%s", &cpf);
+					fflush(stdin);
+					printf("Endereco: ");
+					scanf("%s", &end);
+					fflush(stdin);
+					printf("\nEmail: ");
+					scanf("%s", &email);
+					printf("\nAssento: %d%d", fileira, coluna);
+					printf("\n%s", nome_social);
+					printf("\n%s", cpf);
+					printf("\n%s", end);
+					printf("\n%s", email);
+					printf("\nPCD");
+					printf("\n%s", data_hora);
+					printf("\nCadastro realizado com sucesso\n\n");
+					break; //Quebra o Caso 1(opt_nome_social)
+				case 2:
+					fflush(stdin);
+					printf("\nNome: ");
+					scanf("%s", &nome);
+					fflush(stdin);
+					printf("\nCPF: ");
+					scanf("%s", &cpf);
+					fflush(stdin);
+					printf("Endereco: ");
+					scanf("%s", &end);
+					fflush(stdin);
+					printf("\nEmail: ");
+					scanf("%s", &email);
+					printf("\nAssento: %d%d", fileira, coluna);
+					printf("\n%s", nome);
+					printf("\n%s", cpf);
+					printf("\n%s", end);
+					printf("\n%s", email);
+					printf("\nPCD");
+					printf("\n%s", data_hora);
+					printf("\nCadastro realizado com sucesso\n\n");
+					break; //Quebra o Caso 2(opt_nome_social)
+				default:
+					printf("\nOpcao Invalida\n");
+					break; //Quebra a escolha(opt_nome_social)
+				}
+				continue; //Continua para o loop while
+
+			case 2:
+				fflush(stdin);
+				printf("Fileira: ");
+				scanf("%d", &fileira);
+				fflush(stdin);
+				printf("Coluna: ");
+				scanf("%d", &coluna);
+
+				//Se o lugar estiver disponivel continua
+				if (lugares[fileira][coluna] == 0 && fileira >= 0 && fileira < 7 && coluna >= 0 && coluna < 10) {
+					printf("\nLugar Disponivel\n");
+				}
+				//Senão
+				else {
+					printf("\nLugar Indisponivel\n\n");
+					break; //Quebra o Senão e o Caso 2(PCD)
+				}
+				lugares[fileira][coluna] = 1; //Muda o lugar selecionado de 0 para 1 
+				printf("\nPossui nome social?\n(1) Sim\n(2) Nao\n");
+				scanf("%d", &opt_nome_social);
+				switch (opt_nome_social) {
+				case 1:
+					fflush(stdin);
+					printf("\nNome Social: ");
+					scanf("%s", &nome_social);
+					fflush(stdin);
+					printf("\nCPF: ");
+					scanf("%s", &cpf);
+					fflush(stdin);
+					printf("Endereco: ");
+					scanf("%s", &end);
+					fflush(stdin);
+					printf("\nEmail: ");
+					scanf("%s", &email);
+					printf("\nAssento: %d%d", fileira, coluna);
+					printf("\n%s", nome_social);
+					printf("\n%s", cpf);
+					printf("\n%s", end);
+					printf("\n%s", email);
+					printf("\nPCD");
+					printf("\n%s", data_hora);
+					printf("\nCadastro realizado com sucesso\n\n");
+					break; //Quebra o Caso 1(opt_nome_social)
+				case 2:
+					fflush(stdin);
+					printf("\nNome: ");
+					scanf("%s", &nome);
+					fflush(stdin);
+					printf("\nCPF: ");
+					scanf("%s", &cpf);
+					fflush(stdin);
+					printf("Endereco: ");
+					scanf("%s", &end);
+					fflush(stdin);
+					printf("\nEmail: ");
+					scanf("%s", &email);
+					printf("\nAssento: %d%d", fileira, coluna);
+					printf("\n%s", nome);
+					printf("\n%s", cpf);
+					printf("\n%s", end);
+					printf("\n%s", email);
+					printf("\nPCD");
+					printf("\n%s", data_hora);
+					printf("\nCadastro realizado com sucesso\n\n");
+					break; //Quebra o Caso 2(opt_nome_social)
+				default:
+					printf("\nOpcao Invalida\n");
+					break; //Quebra a escolha(opt_nome_social)
+				}
+			}
+			continue; //Continua para o loop while
+
+		case 2:
+			
+			fflush(stdin);
+			printf("Fileira: ");
+			scanf("%d", &fileira);
+			fflush(stdin);
+			printf("Coluna: ");
+			scanf("%d", &coluna);
+			printf("\n\nNome do convidado: ");
+			scanf("%s", &nome);
+			fflush(stdin);
+			printf("CPF do convidado");
+			scanf("%s", &cpf);
+
+			//Se o lugar estiver disponivel continua
+			if (lugares[fileira][coluna] == 0 && fileira >= 8 && fileira < 10 && coluna >= 0 && coluna < 10) {
+				fflush(stdin);
+				printf("Fileira: ");
+				scanf("%d", &fileira);
+				fflush(stdin);
+				printf("Coluna: ");
+				scanf("%d", &coluna);
+				lugares[fileira][coluna] = 1;
+				printf("\n\nAssento: %d%d", fileira, coluna);
+				printf("\n%s", nome);
+				printf("\n%s", cpf);
+				printf("\n%s", end);
+				printf("\nCONVIDADO");
+				printf("\n%s", data_hora);
+				printf("\nCadastro realizado com sucesso\n\n");
+			}
+			//Senão
+			else {
+				printf("\nConvidados devem escolher lugares nas fileiras 8/9\n");
+				printf("\nCadastro nao realizado\n\n");
+			}
+			continue; //Continua para o loop while
+
+		case 3:
+			//Loop for para Escrever na tela a matriz com lugares disponíveis e indisponíveis
+			for (fileira = 0; fileira < 10; fileira++) {
+				for (coluna = 0; coluna < 10; coluna++) {
+					printf("%d  ", lugares[fileira][coluna]);
+				}
+				printf("\n");
+			}
+			continue; //Continua para o loop while
+
+		case 4:
+			srand(time(NULL)); //Função randomica
+			r = rand() % 80; //Gerador do numero randomico
+			printf("\n\nNumero ganhador: %d", r); //Escreve o número ganhador
+		}
+	}
+}
